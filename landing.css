@@ -1,0 +1,60 @@
+body {
+  background-color: white;
+  font-family: 'Inter', sans-serif;
+   display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+    "a1" 
+    "a2" 
+    "a3";
+    row-gap: 24px;
+
+   margin: 0;
+   margin-left: 10px; 
+   margin-right:10px; 
+}
+
+.page-title {
+    justify-self: stretch;
+    background-color: blue;
+    grid-area: a1; 
+    color: White;
+    font-size: 40px;
+    text-align: center;
+    border-radius: 10px;
+    
+}
+
+.intro {
+    grid-area: a2;
+    background-color: purple;
+    font-size: medium;
+    border-radius: 10px;
+}
+.reports {
+    grid-area: a3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "b1 b2 b3";
+    gap: 24px;
+
+    width: 100%;
+    justify-items: start; 
+    border-radius: 10px;
+   
+   
+}
+
+.Lulu{
+    grid-area: b1;
+    background-color: white; 
+}
+
+.Abercrombie{
+    grid-area: b2;
+     background-color: green; 
+}
+
+.Sprouts{
+    grid-area: b3;
+}

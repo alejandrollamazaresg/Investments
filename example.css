@@ -1,0 +1,124 @@
+/* ===== Base ===== */
+:root{
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --border: #dbe3ee;
+  --text: #0f172a;
+  --muted: #475569;
+  --accent: #1e40af; /* navy */
+  --accent-2: #2563eb;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Center the page + give it structure */
+.landing-page{
+  max-width: 1600px;
+  margin: 24px auto;
+  padding: 0 16px 40px;
+  display: grid;
+  gap: 16px;
+}
+
+/* ===== Header ===== */
+.page-title{
+  margin: 0;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+
+  font-size: 34px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+
+  /* subtle analyst vibe bar */
+  border-left: 8px solid var(--accent);
+}
+
+/* ===== Intro panel ===== */
+.intro{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 18px;
+  color: var(--muted);
+}
+
+.intro p{
+  margin: 20px;
+}
+
+/* ===== Reports Grid ===== */
+.reports{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Card style for each report */
+.reports > div{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.04);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.reports > div:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.10);
+  border-color: #c8d4e6;
+}
+
+.reports h2{
+  margin: 0 0 8px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.reports p{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Link looks like a clean analyst “action” */
+.reports a{
+  display: inline-block;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+.reports a:hover{
+  background: #e8efff;
+  border-color: #bfd0ff;
+  color: var(--accent-2);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px){
+  .reports{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px){
+  .reports{ grid-template-columns: 1fr; }
+  .page-title{ font-size: 28px; }
+}
