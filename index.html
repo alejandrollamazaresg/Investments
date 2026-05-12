@@ -1,45 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWMD5LDJSE"></script>
-  <script>
-   window.dataLayer = window.dataLayer || [];
-   function gtag(){dataLayer.push(arguments);}
-   gtag('js', new Date());
-
-    gtag('config', 'G-HWMD5LDJSE');
-  </script>
   <meta charset="UTF-8">
-  <title>My Reports</title>
-  <link rel="stylesheet" href="example.css">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alejandro Llamazares — Equity Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="landing-page">
-  <h1 class="page-title">Valuation & Financial Modeling Portfolio-Alejandro Llamazares</h1>
-  <div class="intro">
-    <P> This site showcases my independent company analysis and valuation work. The reports include business and industry overviews, financial statement analysis, operating drivers, valuation (DCF and comparable companies), and key risks and scenarios. These materials are for educational purposes and reflect information available as of the report date. These reports only reflect information available as of the report date.
-  </div>
-  <div class = "reports">
-  <div class="Abercrombie ">
-    <h2> Abercrombie</h2>
-    
-    <a href="Abercrombie research.pdf" target="_blank"> Abercrombie – Report (PDF)</a>
-  </div>
-  <div class="Sprouts ">
-    <h2> Sprouts Farmers Market </h2>
-    
-    <a href="Sprouts Research.pdf" target="_blank">Sprouts Farmers Market – Report (PDF)</a>
-  </div>
-  <div class="Lulu">
-    <h2> Lululemon</h2>
-    
-    <a href="Lululemon_research.pdf" target="_blank">Lululemon – Report (PDF)</a>
-  </div>
+<div class="page">
+
+  <!-- ── MASTHEAD ── -->
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="brand-rule">
+        <div class="brand-line"></div>
+        <span class="brand-name">Alejandro Llamazares</span>
+      </div>
+      <span class="brand-sub">Independent Equity Research &nbsp;·&nbsp; Boston College '26</span>
+    </div>
+
+    <nav>
+      <ul class="masthead-nav">
+        <li><a href="#coverage">Coverage</a></li>
+        <li><a href="#methodology">Methodology</a></li>
+        <li><a href="https://www.linkedin.com/in/alejandro-llamazares" target="_blank">LinkedIn</a></li>
+      </ul>
+    </nav>
+
+    <div class="masthead-right">
+      <div class="status-dot"></div>
+      <span class="status-text">3 Active Reports</span>
+    </div>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="hero-kicker">
+        <span class="kicker-num">01</span>
+        <span class="kicker-line"></span>
+        <span class="kicker-label">Portfolio — Consumer &amp; Retail</span>
+      </div>
+
+      <h1>Valuation &amp; Financial<br>Modeling <em>Portfolio</em></h1>
+
+      <p class="hero-desc">
+        Independent company analysis combining DCF and public comparables valuation
+        with fundamental business research. Each report covers industry dynamics,
+        operating drivers, financial statement analysis, and scenario-based price targets.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">DCF Valuation</span>
+        <span class="tag">Comps Analysis</span>
+        <span class="tag">Consumer &amp; Retail</span>
+        <span class="tag">Sensitivity Analysis</span>
+        <span class="tag">Buy-Side Framing</span>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stats-title">Portfolio Overview</div>
+      <div class="stats-grid">
+        <div class="stat-block">
+          <div class="stat-label">Reports Published</div>
+          <div class="stat-value">3</div>
+          <div class="stat-sub">Consumer Discretionary &amp; Staples</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-label">Avg. Implied Upside</div>
+          <div class="stat-value up">+36.8%</div>
+          <div class="stat-sub">Weighted by conviction</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-label">Strong Buy Ratings</div>
+          <div class="stat-value">2 / 3</div>
+          <div class="stat-sub">ANF &amp; SFM</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-label">Combined Mkt. Cap</div>
+          <div class="stat-value">$36.9B</div>
+          <div class="stat-sub">Coverage universe</div>
+        </div>
+      </div>
+      <div class="stats-divider"></div>
+      <p class="stats-note">
+        All analysis reflects information available as of each report date.
+        Primary valuation methodology is discounted cash flow, validated against
+        public company comparables.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── COVERAGE ── -->
+  <section id="coverage">
+    <div class="section-header">
+      <div class="section-label">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Coverage Universe</h2>
+      </div>
+      <span class="section-meta">3 Reports &nbsp;·&nbsp; FY2025–2026</span>
+    </div>
+
+    <div class="reports-grid">
+
+      <!-- ANF -->
+      <a class="report-card" href="Abercrombie research.pdf" target="_blank">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-meta">
+            <span class="card-ticker">NYSE: ANF</span>
+            <span class="card-date"><strong>31 Oct 2025</strong></span>
+          </div>
+          <div class="card-company">Abercrombie &amp; Fitch</div>
+          <div class="card-sector">Specialty Apparel &nbsp;·&nbsp; Consumer Discretionary</div>
+        </div>
+        <div class="card-chart-area">
+          <canvas class="chart-canvas" id="chart-ANF"></canvas>
+          <div class="chart-live">
+            <span class="live-price" id="price-ANF">—</span>
+            <span class="live-change" id="change-ANF">Loading…</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-kpis">
+            <div class="kpi">
+              <div class="kpi-label">Entry Price</div>
+              <div class="kpi-value">$70.90</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Target</div>
+              <div class="kpi-value">$114</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Upside</div>
+              <div class="kpi-value up">+60.8%</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">EV/EBITDA</div>
+              <div class="kpi-value">3.07×</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">P/E LTM</div>
+              <div class="kpi-value">6.6×</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Beta</div>
+              <div class="kpi-value">1.35</div>
+            </div>
+          </div>
+          <p class="card-thesis">Sell-off is overdone. Inventory misstep is temporary; traffic remains strong. Low single-digit growth assumptions support a compelling valuation re-rating thesis.</p>
+        </div>
+        <div class="card-foot">
+          <span class="rating buy">Strong Buy</span>
+          <span class="card-cta">
+            View Report
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- SFM -->
+      <a class="report-card" href="Sprouts Research.pdf" target="_blank">
+        <div class="card-accent green"></div>
+        <div class="card-head">
+          <div class="card-meta">
+            <span class="card-ticker green">NASDAQ: SFM</span>
+            <span class="card-date"><strong>08 Jan 2026</strong></span>
+          </div>
+          <div class="card-company">Sprouts Farmers Market</div>
+          <div class="card-sector">Grocery Retail &nbsp;·&nbsp; Consumer Staples</div>
+        </div>
+        <div class="card-chart-area">
+          <canvas class="chart-canvas" id="chart-SFM"></canvas>
+          <div class="chart-live">
+            <span class="live-price" id="price-SFM">—</span>
+            <span class="live-change" id="change-SFM">Loading…</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-kpis">
+            <div class="kpi">
+              <div class="kpi-label">Entry Price</div>
+              <div class="kpi-value">$80.30</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Target</div>
+              <div class="kpi-value">$114</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Upside</div>
+              <div class="kpi-value up">+42.5%</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">EV/EBITDA</div>
+              <div class="kpi-value">7.79×</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">P/E LTM</div>
+              <div class="kpi-value">15.4×</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Beta</div>
+              <div class="kpi-value">0.68</div>
+            </div>
+          </div>
+          <p class="card-thesis">Materially undervalued after 2025 earnings miss and cautious guidance. Store expansion runway to 1,000 units plus organic food secular tailwinds underpin the thesis.</p>
+        </div>
+        <div class="card-foot">
+          <span class="rating buy">Strong Buy</span>
+          <span class="card-cta green">
+            View Report
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- LULU -->
+      <a class="report-card" href="Lululemon_research.pdf" target="_blank">
+        <div class="card-accent blue"></div>
+        <div class="card-head">
+          <div class="card-meta">
+            <span class="card-ticker blue">NASDAQ: LULU</span>
+            <span class="card-date"><strong>02 Jan 2026</strong></span>
+          </div>
+          <div class="card-company">Lululemon Athletica</div>
+          <div class="card-sector">Athleisure &nbsp;·&nbsp; Consumer Discretionary</div>
+        </div>
+        <div class="card-chart-area">
+          <canvas class="chart-canvas" id="chart-LULU"></canvas>
+          <div class="chart-live">
+            <span class="live-price" id="price-LULU">—</span>
+            <span class="live-change" id="change-LULU">Loading…</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-kpis">
+            <div class="kpi">
+              <div class="kpi-label">Entry Price</div>
+              <div class="kpi-value">$210</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Target</div>
+              <div class="kpi-value">$225</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Upside</div>
+              <div class="kpi-value up">+7.1%</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">EV/EBITDA</div>
+              <div class="kpi-value">8.33×</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">WACC</div>
+              <div class="kpi-value">8.50%</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Beta</div>
+              <div class="kpi-value">1.01</div>
+            </div>
+          </div>
+          <p class="card-thesis">Cyclical weakness, not structural decline. China at 37.8% CAGR and underpenetrated men's segment offer durable multi-year growth with premium brand protection.</p>
+        </div>
+        <div class="card-foot">
+          <span class="rating hold">Hold</span>
+          <span class="card-cta blue">
+            View Report
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── METHODOLOGY ── -->
+  <section id="methodology">
+    <div class="section-header">
+      <div class="section-label">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Analytical Approach</h2>
+      </div>
+    </div>
+
+    <div class="philosophy">
+      <div class="phil-item">
+        <div class="phil-num">I</div>
+        <div class="phil-title">Fundamental First</div>
+        <p class="phil-body">Every thesis begins with a deep understanding of the business model, competitive position, and long-term industry dynamics before a single multiple is applied.</p>
+      </div>
+      <div class="phil-item">
+        <div class="phil-num">II</div>
+        <div class="phil-title">DCF Primary</div>
+        <p class="phil-body">Discounted cash flow analysis is the primary valuation tool. Comparables serve as a sanity check, not the foundation—peer groups are scrutinised for comparability.</p>
+      </div>
+      <div class="phil-item">
+        <div class="phil-num">III</div>
+        <div class="phil-title">Conservative Assumptions</div>
+        <p class="phil-body">Growth assumptions are deliberately kept below recent historical rates. Conviction in a thesis should not require heroic forecasts to generate compelling returns.</p>
+      </div>
+      <div class="phil-item">
+        <div class="phil-num">IV</div>
+        <div class="phil-title">Scenario Discipline</div>
+        <p class="phil-body">Each report includes a full sensitivity matrix across WACC, terminal growth, and top-line assumptions, making bull and bear cases explicit and quantifiable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DISCLAIMER ── -->
+  <div class="disclaimer">
+    <span class="disclaimer-icon">DISCL.</span>
+    <p>
+      These reports are produced independently for educational and portfolio demonstration purposes only.
+      All analysis reflects information available as of each report date and does not constitute investment advice.
+      Price targets and ratings represent the author's personal views and should not be relied upon for investment decisions.
+      Past performance of covered securities is not indicative of future results.
+    </p>
   </div>
 
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-identity">
+      <span class="footer-name">Alejandro Llamazares</span>
+      <span class="footer-role">Finance &amp; Accounting &nbsp;·&nbsp; Boston College '26</span>
+    </div>
+    <nav class="footer-links">
+      <a href="https://www.linkedin.com/in/alejandro-llamazares" target="_blank">LinkedIn</a>
+      <a href="mailto:alejandro@example.com">Email</a>
+      <a href="https://github.com/alejandrollamazaresg" target="_blank">GitHub</a>
+    </nav>
+  </footer>
+
 </div>
+
+<script>
+
+
+function drawSparkline(id, prices, timestamps, reportDate, color) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width  = rect.width  * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.scale(dpr, dpr);
+
+  const W = rect.width, H = rect.height;
+  const pad = { top: 16, bottom: 18, left: 4, right: 80 };
+  const cW = W - pad.left - pad.right;
+  const cH = H - pad.top  - pad.bottom;
+  const mn = Math.min(...prices), mx = Math.max(...prices);
+  const rng = mx - mn || 1;
+
+  const toX = i => pad.left + (i / (prices.length - 1)) * cW;
+  const toY = p => pad.top  + (1 - (p - mn) / rng) * cH;
+
+  // filled area
+  ctx.beginPath();
+  ctx.moveTo(toX(0), toY(prices[0]));
+  prices.forEach((p, i) => ctx.lineTo(toX(i), toY(p)));
+  ctx.lineTo(toX(prices.length - 1), H - pad.bottom);
+  ctx.lineTo(pad.left, H - pad.bottom);
+  ctx.closePath();
+  ctx.fillStyle = color.fill;
+  ctx.fill();
+
+  // line
+  ctx.beginPath();
+  ctx.moveTo(toX(0), toY(prices[0]));
+  prices.forEach((p, i) => ctx.lineTo(toX(i), toY(p)));
+  ctx.strokeStyle = color.line;
+  ctx.lineWidth = 1.5;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+
+  // report date vertical line
+  const reportMs = new Date(reportDate).getTime();
+  let reportIdx = timestamps.findIndex(ts => ts * 1000 >= reportMs);
+  if (reportIdx === -1) reportIdx = 0;
+  const rx = toX(reportIdx);
+
+  ctx.save();
+  ctx.setLineDash([3, 3]);
+  ctx.strokeStyle = color.line;
+  ctx.globalAlpha = 0.45;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(rx, pad.top);
+  ctx.lineTo(rx, H - pad.bottom);
+  ctx.stroke();
+  ctx.restore();
+
+  // "Report" label above the line
+  ctx.font = `500 9px "JetBrains Mono", monospace`;
+  ctx.fillStyle = color.line;
+  ctx.globalAlpha = 0.7;
+  ctx.fillText('Report', rx + 3, pad.top + 1);
+  ctx.globalAlpha = 1;
+
+  // report dot on the line
+  ctx.beginPath();
+  ctx.arc(rx, toY(prices[reportIdx]), 3.5, 0, Math.PI * 2);
+  ctx.fillStyle = color.line;
+  ctx.globalAlpha = 0.6;
+  ctx.fill();
+  ctx.globalAlpha = 1;
+
+  // terminal dot
+  const ex = toX(prices.length - 1);
+  const ey = toY(prices[prices.length - 1]);
+  ctx.beginPath();
+  ctx.arc(ex, ey, 3.5, 0, Math.PI * 2);
+  ctx.fillStyle = color.line;
+  ctx.fill();
+
+  // x-axis date labels
+  ctx.font = `300 9px "JetBrains Mono", monospace`;
+  ctx.fillStyle = '#8c95a3';
+  ctx.globalAlpha = 1;
+
+  const startDate = new Date(timestamps[0] * 1000);
+  const endDate   = new Date(timestamps[timestamps.length - 1] * 1000);
+  const fmt = d => d.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+
+  ctx.textAlign = 'left';
+  ctx.fillText(fmt(startDate), pad.left, H - 2);
+  ctx.textAlign = 'right';
+  ctx.fillText(fmt(endDate), W - pad.right + 8, H - 2);
+}
+
+const COLORS = {
+  ANF:  { line: '#8b6914', fill: 'rgba(139,105,20,0.06)' },
+  SFM:  { line: '#0d7a52', fill: 'rgba(13,122,82,0.06)'  },
+  LULU: { line: '#1a4fa0', fill: 'rgba(26,79,160,0.06)'  },
+};
+
+const REPORT_DATES = {
+  ANF:  '2025-10-31',
+  SFM:  '2026-01-08',
+  LULU: '2026-01-02',
+};
+
+async function loadChart(ticker) {
+  const color      = COLORS[ticker];
+  const priceEl    = document.getElementById('price-'  + ticker);
+  const chgEl      = document.getElementById('change-' + ticker);
+  const reportDate = REPORT_DATES[ticker];
+  try {
+    const url  = `https://corsproxy.io/?https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=6mo`;
+    const res  = await fetch(url);
+    const json = await res.json();
+    const result     = json.chart.result[0];
+    const closes     = result.indicators.quote[0].close.filter(Boolean);
+    const timestamps = result.timestamp;
+    const meta       = result.meta;
+    const current    = meta.regularMarketPrice;
+    const prev       = meta.chartPreviousClose || closes[closes.length - 2];
+    const pct        = ((current - prev) / prev * 100).toFixed(2);
+    const isUp       = Number(pct) >= 0;
+
+    drawSparkline('chart-' + ticker, closes, timestamps, reportDate, color);
+
+    priceEl.textContent = '$' + current.toFixed(2);
+    chgEl.textContent   = (isUp ? '▲ +' : '▼ ') + pct + '%';
+    chgEl.className     = 'live-change ' + (isUp ? 'up' : 'down');
+  } catch {
+    if (priceEl) priceEl.textContent = '—';
+    if (chgEl)   { chgEl.textContent = 'N/A'; chgEl.className = 'live-change'; }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  ['ANF', 'SFM', 'LULU'].forEach(loadChart);
+});
+</script>
 </body>
 </html>
