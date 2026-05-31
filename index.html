@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Style.css">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
       <ul class="masthead-nav">
         <li><a href="#coverage">Coverage</a></li>
         <li><a href="#methodology">Methodology</a></li>
-        <li><a href="https://www.linkedin.com/in/alejandro-llamazares" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/alejandro-llamazares-g" target="_blank">LinkedIn</a></li>
       </ul>
     </nav>
 
@@ -109,7 +109,7 @@
     <div class="reports-grid">
 
       <!-- ANF -->
-      <a class="report-card" href="Abercrombie research.pdf" target="_blank">
+      <div class="report-card">
         <div class="card-accent"></div>
         <div class="card-head">
           <div class="card-meta">
@@ -120,7 +120,7 @@
           <div class="card-sector">Specialty Apparel &nbsp;·&nbsp; Consumer Discretionary</div>
         </div>
         <div class="card-chart-area">
-          <canvas class="chart-canvas" id="chart-ANF"></canvas>
+          <canvas class="chart-canvas" id="chart-ANF"></canvas><div class="chart-tooltip" id="tooltip-ANF"></div>
           <div class="chart-live">
             <span class="live-price" id="price-ANF">—</span>
             <span class="live-change" id="change-ANF">Loading…</span>
@@ -157,17 +157,17 @@
         </div>
         <div class="card-foot">
           <span class="rating buy">Strong Buy</span>
-          <span class="card-cta">
+          <a class="card-cta" href="Abercrombie research.pdf" target="_blank" rel="noopener">
             View Report
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
               <path d="M3 8h10M9 4l4 4-4 4"/>
             </svg>
-          </span>
+          </a>
         </div>
-      </a>
+      </div>
 
       <!-- SFM -->
-      <a class="report-card" href="Sprouts Research.pdf" target="_blank">
+      <div class="report-card">
         <div class="card-accent green"></div>
         <div class="card-head">
           <div class="card-meta">
@@ -178,7 +178,7 @@
           <div class="card-sector">Grocery Retail &nbsp;·&nbsp; Consumer Staples</div>
         </div>
         <div class="card-chart-area">
-          <canvas class="chart-canvas" id="chart-SFM"></canvas>
+          <canvas class="chart-canvas" id="chart-SFM"></canvas><div class="chart-tooltip" id="tooltip-SFM"></div>
           <div class="chart-live">
             <span class="live-price" id="price-SFM">—</span>
             <span class="live-change" id="change-SFM">Loading…</span>
@@ -215,17 +215,17 @@
         </div>
         <div class="card-foot">
           <span class="rating buy">Strong Buy</span>
-          <span class="card-cta green">
+          <a class="card-cta green" href="Sprouts Research.pdf" target="_blank" rel="noopener">
             View Report
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
               <path d="M3 8h10M9 4l4 4-4 4"/>
             </svg>
-          </span>
+          </a>
         </div>
-      </a>
+      </div>
 
       <!-- LULU -->
-      <a class="report-card" href="Lululemon_research.pdf" target="_blank">
+      <div class="report-card">
         <div class="card-accent blue"></div>
         <div class="card-head">
           <div class="card-meta">
@@ -236,7 +236,7 @@
           <div class="card-sector">Athleisure &nbsp;·&nbsp; Consumer Discretionary</div>
         </div>
         <div class="card-chart-area">
-          <canvas class="chart-canvas" id="chart-LULU"></canvas>
+          <canvas class="chart-canvas" id="chart-LULU"></canvas><div class="chart-tooltip" id="tooltip-LULU"></div>
           <div class="chart-live">
             <span class="live-price" id="price-LULU">—</span>
             <span class="live-change" id="change-LULU">Loading…</span>
@@ -273,14 +273,14 @@
         </div>
         <div class="card-foot">
           <span class="rating hold">Hold</span>
-          <span class="card-cta blue">
+          <a class="card-cta blue" href="Lululemon_research.pdf" target="_blank" rel="noopener">
             View Report
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
               <path d="M3 8h10M9 4l4 4-4 4"/>
             </svg>
-          </span>
+          </a>
         </div>
-      </a>
+      </div>
 
     </div>
   </section>
@@ -350,95 +350,163 @@
 function drawSparkline(id, prices, timestamps, reportDate, color) {
   const canvas = document.getElementById(id);
   if (!canvas) return;
+
+  const ticker = id.replace('chart-', '');
+  const tooltip = document.getElementById('tooltip-' + ticker);
   const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio || 1;
-  const rect = canvas.getBoundingClientRect();
-  canvas.width  = rect.width  * dpr;
-  canvas.height = rect.height * dpr;
-  ctx.scale(dpr, dpr);
 
-  const W = rect.width, H = rect.height;
-  const pad = { top: 16, bottom: 18, left: 4, right: 80 };
-  const cW = W - pad.left - pad.right;
-  const cH = H - pad.top  - pad.bottom;
-  const mn = Math.min(...prices), mx = Math.max(...prices);
-  const rng = mx - mn || 1;
+  function render(hoverIdx = null) {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width  = rect.width  * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-  const toX = i => pad.left + (i / (prices.length - 1)) * cW;
-  const toY = p => pad.top  + (1 - (p - mn) / rng) * cH;
+    const W = rect.width, H = rect.height;
+    const pad = { top: 16, bottom: 18, left: 4, right: 80 };
+    const cW = W - pad.left - pad.right;
+    const cH = H - pad.top  - pad.bottom;
+    const mn = Math.min(...prices), mx = Math.max(...prices);
+    const rng = mx - mn || 1;
 
-  // filled area
-  ctx.beginPath();
-  ctx.moveTo(toX(0), toY(prices[0]));
-  prices.forEach((p, i) => ctx.lineTo(toX(i), toY(p)));
-  ctx.lineTo(toX(prices.length - 1), H - pad.bottom);
-  ctx.lineTo(pad.left, H - pad.bottom);
-  ctx.closePath();
-  ctx.fillStyle = color.fill;
-  ctx.fill();
+    const toX = i => pad.left + (i / (prices.length - 1)) * cW;
+    const toY = p => pad.top  + (1 - (p - mn) / rng) * cH;
 
-  // line
-  ctx.beginPath();
-  ctx.moveTo(toX(0), toY(prices[0]));
-  prices.forEach((p, i) => ctx.lineTo(toX(i), toY(p)));
-  ctx.strokeStyle = color.line;
-  ctx.lineWidth = 1.5;
-  ctx.lineJoin = 'round';
-  ctx.stroke();
+    ctx.clearRect(0, 0, W, H);
 
-  // report date vertical line
-  const reportMs = new Date(reportDate).getTime();
-  let reportIdx = timestamps.findIndex(ts => ts * 1000 >= reportMs);
-  if (reportIdx === -1) reportIdx = 0;
-  const rx = toX(reportIdx);
+    // filled area
+    ctx.beginPath();
+    ctx.moveTo(toX(0), toY(prices[0]));
+    prices.forEach((p, i) => ctx.lineTo(toX(i), toY(p)));
+    ctx.lineTo(toX(prices.length - 1), H - pad.bottom);
+    ctx.lineTo(pad.left, H - pad.bottom);
+    ctx.closePath();
+    ctx.fillStyle = color.fill;
+    ctx.fill();
 
-  ctx.save();
-  ctx.setLineDash([3, 3]);
-  ctx.strokeStyle = color.line;
-  ctx.globalAlpha = 0.45;
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(rx, pad.top);
-  ctx.lineTo(rx, H - pad.bottom);
-  ctx.stroke();
-  ctx.restore();
+    // line
+    ctx.beginPath();
+    ctx.moveTo(toX(0), toY(prices[0]));
+    prices.forEach((p, i) => ctx.lineTo(toX(i), toY(p)));
+    ctx.strokeStyle = color.line;
+    ctx.lineWidth = 1.5;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
 
-  // "Report" label above the line
-  ctx.font = `500 9px "JetBrains Mono", monospace`;
-  ctx.fillStyle = color.line;
-  ctx.globalAlpha = 0.7;
-  ctx.fillText('Report', rx + 3, pad.top + 1);
-  ctx.globalAlpha = 1;
+    // report date vertical line
+    const reportMs = new Date(reportDate).getTime();
+    let reportIdx = timestamps.findIndex(ts => ts * 1000 >= reportMs);
+    if (reportIdx === -1) reportIdx = 0;
+    const rx = toX(reportIdx);
 
-  // report dot on the line
-  ctx.beginPath();
-  ctx.arc(rx, toY(prices[reportIdx]), 3.5, 0, Math.PI * 2);
-  ctx.fillStyle = color.line;
-  ctx.globalAlpha = 0.6;
-  ctx.fill();
-  ctx.globalAlpha = 1;
+    ctx.save();
+    ctx.setLineDash([3, 3]);
+    ctx.strokeStyle = color.line;
+    ctx.globalAlpha = 0.45;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(rx, pad.top);
+    ctx.lineTo(rx, H - pad.bottom);
+    ctx.stroke();
+    ctx.restore();
 
-  // terminal dot
-  const ex = toX(prices.length - 1);
-  const ey = toY(prices[prices.length - 1]);
-  ctx.beginPath();
-  ctx.arc(ex, ey, 3.5, 0, Math.PI * 2);
-  ctx.fillStyle = color.line;
-  ctx.fill();
+    ctx.font = `500 9px "JetBrains Mono", monospace`;
+    ctx.fillStyle = color.line;
+    ctx.globalAlpha = 0.7;
+    ctx.fillText('Report', rx + 3, pad.top + 1);
+    ctx.globalAlpha = 1;
 
-  // x-axis date labels
-  ctx.font = `300 9px "JetBrains Mono", monospace`;
-  ctx.fillStyle = '#8c95a3';
-  ctx.globalAlpha = 1;
+    ctx.beginPath();
+    ctx.arc(rx, toY(prices[reportIdx]), 3.5, 0, Math.PI * 2);
+    ctx.fillStyle = color.line;
+    ctx.globalAlpha = 0.6;
+    ctx.fill();
+    ctx.globalAlpha = 1;
 
-  const startDate = new Date(timestamps[0] * 1000);
-  const endDate   = new Date(timestamps[timestamps.length - 1] * 1000);
-  const fmt = d => d.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+    // hover crosshair + dot
+    if (hoverIdx !== null) {
+      const hx = toX(hoverIdx);
+      const hy = toY(prices[hoverIdx]);
 
-  ctx.textAlign = 'left';
-  ctx.fillText(fmt(startDate), pad.left, H - 2);
-  ctx.textAlign = 'right';
-  ctx.fillText(fmt(endDate), W - pad.right + 8, H - 2);
+      ctx.save();
+      ctx.setLineDash([3, 3]);
+      ctx.strokeStyle = color.line;
+      ctx.globalAlpha = 0.5;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(hx, pad.top);
+      ctx.lineTo(hx, H - pad.bottom);
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.beginPath();
+      ctx.arc(hx, hy, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+      ctx.strokeStyle = color.line;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    // terminal dot
+    const ex = toX(prices.length - 1);
+    const ey = toY(prices[prices.length - 1]);
+    ctx.beginPath();
+    ctx.arc(ex, ey, 3.5, 0, Math.PI * 2);
+    ctx.fillStyle = color.line;
+    ctx.fill();
+
+    // x-axis date labels
+    ctx.font = `300 9px "JetBrains Mono", monospace`;
+    ctx.fillStyle = '#8c95a3';
+
+    const startDate = new Date(timestamps[0] * 1000);
+    const endDate   = new Date(timestamps[timestamps.length - 1] * 1000);
+    const fmt = d => d.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+
+    ctx.textAlign = 'left';
+    ctx.fillText(fmt(startDate), pad.left, H - 2);
+    ctx.textAlign = 'right';
+    ctx.fillText(fmt(endDate), W - pad.right + 8, H - 2);
+
+    return { pad, cW, toX, toY };
+  }
+
+  let chartState = render();
+
+  canvas.addEventListener('mousemove', event => {
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const rawIdx = Math.round(((x - chartState.pad.left) / chartState.cW) * (prices.length - 1));
+    const idx = Math.max(0, Math.min(prices.length - 1, rawIdx));
+
+    chartState = render(idx);
+
+    if (tooltip) {
+      const date = new Date(timestamps[idx] * 1000).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+
+      tooltip.innerHTML = `<strong>${date}</strong><span>$${prices[idx].toFixed(2)}</span>`;
+      tooltip.style.opacity = '1';
+
+      const tipX = chartState.toX(idx);
+      const tipY = chartState.toY(prices[idx]);
+      tooltip.style.left = Math.min(Math.max(tipX, 54), rect.width - 54) + 'px';
+      tooltip.style.top = Math.max(tipY - 34, 8) + 'px';
+    }
+  });
+
+  canvas.addEventListener('mouseleave', () => {
+    chartState = render();
+    if (tooltip) tooltip.style.opacity = '0';
+  });
+
+  window.addEventListener('resize', () => {
+    chartState = render();
+  });
 }
 
 const COLORS = {
@@ -453,6 +521,12 @@ const REPORT_DATES = {
   LULU: '2026-01-02',
 };
 
+const ENTRY_PRICES = {
+  ANF: 70.90,
+  SFM: 80.30,
+  LULU: 210.00,
+};
+
 async function loadChart(ticker) {
   const color      = COLORS[ticker];
   const priceEl    = document.getElementById('price-'  + ticker);
@@ -462,20 +536,31 @@ async function loadChart(ticker) {
     const url  = `https://corsproxy.io/?https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=6mo`;
     const res  = await fetch(url);
     const json = await res.json();
-    const result     = json.chart.result[0];
-    const closes     = result.indicators.quote[0].close.filter(Boolean);
-    const timestamps = result.timestamp;
-    const meta       = result.meta;
-    const current    = meta.regularMarketPrice;
-    const prev       = meta.chartPreviousClose || closes[closes.length - 2];
-    const pct        = ((current - prev) / prev * 100).toFixed(2);
-    const isUp       = Number(pct) >= 0;
+    const result = json.chart.result[0];
+
+    // Keep close prices aligned with timestamps by removing nulls as pairs.
+    const rawCloses = result.indicators.quote[0].close;
+    const rawTimestamps = result.timestamp;
+    const points = rawCloses
+      .map((close, i) => ({ close, timestamp: rawTimestamps[i] }))
+      .filter(point => point.close !== null && point.close !== undefined);
+
+    const closes = points.map(point => point.close);
+    const timestamps = points.map(point => point.timestamp);
+
+    const meta = result.meta;
+    const current = meta.regularMarketPrice;
+
+    // Actual return vs. the entry price shown on the card.
+    const entryPrice = ENTRY_PRICES[ticker];
+    const pct = ((current - entryPrice) / entryPrice * 100).toFixed(2);
+    const isUp = Number(pct) >= 0;
 
     drawSparkline('chart-' + ticker, closes, timestamps, reportDate, color);
 
     priceEl.textContent = '$' + current.toFixed(2);
-    chgEl.textContent   = (isUp ? '▲ +' : '▼ ') + pct + '%';
-    chgEl.className     = 'live-change ' + (isUp ? 'up' : 'down');
+    chgEl.textContent = (isUp ? '▲ +' : '▼ ') + pct + '% since entry';
+    chgEl.className = 'live-change ' + (isUp ? 'up' : 'down');
   } catch {
     if (priceEl) priceEl.textContent = '—';
     if (chgEl)   { chgEl.textContent = 'N/A'; chgEl.className = 'live-change'; }
