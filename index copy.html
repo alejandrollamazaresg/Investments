@@ -8,12 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Style.css">
-  <!-- AER accent (amber) — mirrors the green/blue variant pattern; kept here so Style.css stays untouched -->
-  <style>
-    .card-accent.amber { background: #a86e2e; }
-    .card-ticker.amber { color: #a86e2e; background: #f6eede; }
-    .report-card:hover .card-cta.amber { color: #a86e2e; }
-  </style>
 </head>
 <body>
 
@@ -39,7 +33,7 @@
 
     <div class="masthead-right">
       <div class="status-dot"></div>
-      <span class="status-text">4 Active Reports</span>
+      <span class="status-text">3 Active Reports</span>
     </div>
   </header>
 
@@ -58,7 +52,7 @@
     <div class="hero-strip">
       <div class="strip-cell">
         <div class="strip-label">Reports</div>
-        <div class="strip-value">4</div>
+        <div class="strip-value">3</div>
       </div>
       <div class="strip-cell">
         <div class="strip-label">Avg. Upside</div>
@@ -66,7 +60,7 @@
       </div>
       <div class="strip-cell">
         <div class="strip-label">Strong Buy</div>
-        <div class="strip-value">2 / 4</div>
+        <div class="strip-value">2 / 3</div>
       </div>
       <div class="strip-cell">
         <div class="strip-label">HOLD</div>
@@ -86,68 +80,11 @@
         <span class="section-num">02</span>
         <h2 class="section-title">Coverage Universe</h2>
       </div>
-      <span class="section-meta">4 Reports &nbsp;·&nbsp; FY2025–2026</span>
+      <span class="section-meta">3 Reports &nbsp;·&nbsp; FY2025–2026</span>
       <p>The information, ratings, and price targets presented are based on information available at the time each report was written</p>
     </div>
 
     <div class="reports-grid">
-      <!-- AER -->
-      <div class="report-card">
-        <div class="card-accent amber"></div>
-        <div class="card-head">
-          <div class="card-meta">
-            <span class="card-ticker amber">NYSE: AER</span>
-            <span class="card-date"><strong>15 Jul 2026</strong></span>
-          </div>
-          <div class="card-company">AerCap Holdings</div>
-          <div class="card-sector">Aircraft Leasing &nbsp;·&nbsp; Industrials</div>
-        </div>
-        <div class="card-chart-area">
-          <canvas class="chart-canvas" id="chart-AER"></canvas><div class="chart-tooltip" id="tooltip-AER"></div>
-          <div class="chart-live">
-            <span class="live-price" id="price-AER">—</span>
-            <span class="live-change" id="change-AER">Loading…</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="card-kpis">
-            <div class="kpi">
-              <div class="kpi-label">Bull Target</div>
-              <div class="kpi-value">$164</div>
-            </div>
-            <div class="kpi">
-              <div class="kpi-label">Bear Target</div>
-              <div class="kpi-value">$132</div>
-            </div>
-            <div class="kpi">
-              <div class="kpi-label">Upside</div>
-              <div class="kpi-value">9.03%</div>
-            </div>
-            <div class="kpi">
-              <div class="kpi-label">EV/EBITDA</div>
-              <div class="kpi-value">9.88x</div>
-            </div>
-            <div class="kpi">
-              <div class="kpi-label">P/E LTM</div>
-              <div class="kpi-value">7.42x</div>
-            </div>
-            <div class="kpi">
-              <div class="kpi-label">FY26 Adj. EPS</div>
-              <div class="kpi-value">$14.50</div>
-            </div>
-          </div>
-          <p class="card-thesis">World's largest aircraft lessor with a scale-driven moat: OEM discounts, delivery-slot priority, and ~4.1% investment-grade funding. A record Q1'26 and the secular shift toward leasing underpin a leveraged-compounder thesis, valued on residual income rather than DCF.</p>
-        </div>
-        <div class="card-foot">
-          <span class="rating buy">Buy</span>
-          <a class="card-cta amber" href="AerCap_research.pdf" target="_blank" rel="noopener">
-            View Report
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M3 8h10M9 4l4 4-4 4"/>
-            </svg>
-          </a>
-        </div>
-      </div>
 
       <!-- ANF -->
       <div class="report-card">
@@ -323,7 +260,6 @@
         </div>
       </div>
 
-      
     </div>
   </section>
 
@@ -555,21 +491,18 @@ const COLORS = {
   ANF:  { line: '#82876E', fill: 'rgba(130,135,110,0.06)' },
   SFM:  { line: '#2a7a52', fill: 'rgba(42,122,82,0.06)'  },
   LULU: { line: '#3a6b96', fill: 'rgba(58,107,150,0.06)'  },
-  AER:  { line: '#a86e2e', fill: 'rgba(168,110,46,0.06)'  },
 };
 
 const REPORT_DATES = {
   ANF:  '2025-10-31',
   SFM:  '2026-01-08',
   LULU: '2026-01-02',
-  AER:  '2026-07-15',
 };
 
 const ENTRY_PRICES = {
   ANF: 70.90,
   SFM: 80.30,
   LULU: 210.00,
-  AER: 148.00,
 };
 
 async function loadChart(ticker) {
@@ -613,7 +546,7 @@ async function loadChart(ticker) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ['ANF', 'SFM', 'LULU', 'AER'].forEach(loadChart);
+  ['ANF', 'SFM', 'LULU'].forEach(loadChart);
 });
 
   // Nav solid state on scroll
